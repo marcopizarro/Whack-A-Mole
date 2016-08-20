@@ -1,0 +1,307 @@
+
+<!--
+To change this template use Tools | Templates.
+-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Whac-a-mole</title>
+    
+    <!--Link the AJAX api CDN from google-->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+  <link href='https://fonts.googleapis.com/css?family=Passero+One' rel='stylesheet' type='text/css'>
+       <style>
+        #gameCard td{
+               padding:0; margin:0;
+               background-color:white;
+                }
+
+        #gameCard {
+               background-color:white;
+               border-collapse: collapse;
+              
+                }
+       body{
+           background-image: url("soil.jpg");
+           color: white;
+           font-family: 'Passero One', Arial;
+            cursor:url("bucket2.png"), auto;
+       }
+           
+         audio { 
+   display:none;
+}   
+
+    </style>
+    
+</head>
+<body>
+<center>
+    <div id="container">
+        <div id="header">
+             <h1>Whac-a-mole</h1>
+             
+            
+             
+             <div id="scoreOut">Score:</div>
+                <FORM>
+                    <INPUT TYPE="button" onClick="history.go(0)" VALUE="Replay">
+                </FORM>
+            </div>
+            
+        <div id="content">
+            
+            <!--make the table 10x10-->
+            
+            <table  id="gameCard">
+               
+                    </table>
+            <center>
+                    <table>
+                       <body>
+                    <tr>
+                        <td id="cell00">&nbsp;</td>
+                        <td id="cell01">&nbsp;</td>
+                        <td id="cell02">&nbsp;</td>
+                        <td id="cell03">&nbsp;</td>
+                        <td id="cell04">&nbsp;</td>
+                        <td id="cell05">&nbsp;</td>
+                        <td id="cell06">&nbsp;</td>
+                        <td id="cell07">&nbsp;</td>
+                        <td id="cell08">&nbsp;</td>
+                        <td id="cell09">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="cell10">&nbsp;</td>
+                        <td id="cell11">&nbsp;</td>
+                        <td id="cell12">&nbsp;</td>
+                        <td id="cell13">&nbsp;</td>
+                        <td id="cell14">&nbsp;</td>
+                        <td id="cell15">&nbsp;</td>
+                        <td id="cell16">&nbsp;</td>
+                        <td id="cell17">&nbsp;</td>
+                        <td id="cell18">&nbsp;</td>
+                        <td id="cell19">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="cell20">&nbsp;</td>
+                        <td id="cell21">&nbsp;</td>
+                        <td id="cell22">&nbsp;</td>
+                        <td id="cell23">&nbsp;</td>
+                        <td id="cell24">&nbsp;</td>
+                        <td id="cell25">&nbsp;</td>
+                        <td id="cell26">&nbsp;</td>
+                        <td id="cell27">&nbsp;</td>
+                        <td id="cell28">&nbsp;</td>
+                        <td id="cell29">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="cell30">&nbsp;</td>
+                        <td id="cell31">&nbsp;</td>
+                        <td id="cell32">&nbsp;</td>
+                        <td id="cell33">&nbsp;</td>
+                        <td id="cell34">&nbsp;</td>
+                        <td id="cell35">&nbsp;</td>
+                        <td id="cell36">&nbsp;</td>
+                        <td id="cell37">&nbsp;</td>
+                        <td id="cell38">&nbsp;</td>
+                        <td id="cell39">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="cell40">&nbsp;</td>
+                        <td id="cell41">&nbsp;</td>
+                        <td id="cell42">&nbsp;</td>
+                        <td id="cell43">&nbsp;</td>
+                        <td id="cell44">&nbsp;</td>
+                        <td id="cell45">&nbsp;</td>
+                        <td id="cell46">&nbsp;</td>
+                        <td id="cell47">&nbsp;</td>
+                        <td id="cell48">&nbsp;</td>
+                        <td id="cell49">&nbsp;</td>
+                    </tr>
+             <tr>
+                        <td id="cell50">&nbsp;</td>
+                        <td id="cell51">&nbsp;</td>
+                        <td id="cell52">&nbsp;</td>
+                        <td id="cell53">&nbsp;</td>
+                        <td id="cell54">&nbsp;</td>
+                        <td id="cell55">&nbsp;</td>
+                        <td id="cell56">&nbsp;</td>
+                        <td id="cell57">&nbsp;</td>
+                        <td id="cell58">&nbsp;</td>
+                        <td id="cell59">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td id="cell60">&nbsp;</td>
+                        <td id="cell61">&nbsp;</td>
+                        <td id="cell62">&nbsp;</td>
+                        <td id="cell63">&nbsp;</td>
+                        <td id="cell64">&nbsp;</td>
+                        <td id="cell65">&nbsp;</td>
+                        <td id="cell66">&nbsp;</td>
+                        <td id="cell67">&nbsp;</td>
+                        <td id="cell68">&nbsp;</td>
+                        <td id="cell69">&nbsp;</td>
+                    </tr>
+                     <tr>
+                        <td id="cell70">&nbsp;</td>
+                        <td id="cell71">&nbsp;</td>
+                        <td id="cell72">&nbsp;</td>
+                        <td id="cell73">&nbsp;</td>
+                        <td id="cell74">&nbsp;</td>
+                        <td id="cell75">&nbsp;</td>
+                        <td id="cell76">&nbsp;</td>
+                        <td id="cell77">&nbsp;</td>
+                        <td id="cell78">&nbsp;</td>
+                        <td id="cell79">&nbsp;</td>
+                    </tr>
+              
+                 
+                
+            </table>
+        </div>
+   
+    
+    <br>
+    
+    
+    
+</center>
+    
+    
+<!--Start Script Here>-->  
+<script>
+            
+            
+     
+            
+ var score = 0;
+                 
+ function game(){
+        
+      
+      // Set the max length and Width
+        var maxWidth = 8;
+        var maxLength = 8;
+      //contributed by Group 1
+
+//contributed by group 2 random number
+function CreateRandom() {
+         return Math.floor((Math.random() * 4) + 1);   
+}
+        
+
+          
+//function to create an image
+function CreateGopher() {
+    
+    var randomNumber = CreateRandom();
+    var image = "test";
+    
+    
+    //Create initialize the image variable
+    //add if/ else if statements to print an image (if random number is 1 print gopher if else 
+    //print lettuce) use this as the data for the variable image
+    // ( image = "<img src='Gopher.JPG' class='gopher' height='50' width='50'>";)
+    
+    if(randomNumber == 1){
+        image = "<img src='Gopher.png' class='gopher' height='90' width='90'>";
+    }
+    else if(randomNumber == 2){
+        image = "<img src='lettuce.png' class='lettuce' height='90' width='90'>";
+    }
+     else if(randomNumber == 3){
+        image = "<img src='lettuce.png' class='lettuce' height='90' width='90'>";
+    }
+     else if(randomNumber == 4){
+        image = "<img src='lettuce.png' class='lettuce' height='90' width='90'>";
+    }
+    //contributed by group 3 if statements
+    return image;
+}
+
+           
+//create table
+function UpdateTable() {
+    // Iterate over each cell and set a random number
+    for (var i = 0; i < maxLength; i++) {
+        for (var j = 0; j < maxWidth; j++) {
+            tmp = 'cell' + i + j;
+            document.getElementById(tmp).innerHTML = CreateGopher();
+        }
+    }
+    
+    
+    
+}
+            
+
+//Use The function update table
+UpdateTable();
+            
+
+            
+ 
+// Put Jquery Stuff for on click in here 
+// contributed by group 4
+         
+      $( ".lettuce" ).click(function() {
+          //alert( "You Clicked on the lettuce" );
+          score -= 5;
+            
+          document.getElementById("scoreOut").innerHTML = "<h1>Score :" + score;
+        
+        });
+         
+         $( ".gopher" ).click(function() {
+          //alert( "You Clicked on the lettuce" );
+          score += 5;
+            
+          document.getElementById("scoreOut").innerHTML = "<h1>Score :" + score;
+         
+        });
+       
+
+//end of game() function    
+}
+            
+            
+    game();
+    
+    
+        
+    
+    //set interval for function game with 1000 as the timer setting
+    //contributed by group 2
+    setInterval(game, 1000);``
+    
+    //set Time out to alert the score and window.location.href to a starting screen
+    //time set to 16000
+    ////contributed group4
+    setTimeout(function () 
+               
+               {alert("Your Score is " + score)
+                window.location.href = "settings.html";  
+                
+                           }, 16000);  
+               
+     
+               
+               
+//end Script Tag     
+</script>
+    
+    
+ 
+  
+   <audio controls autoplay>
+  <source src="EasyNormal.mp3" type="audio/mpeg">
+       
+Your browser does not support the audio element.
+       
+</audio>
+    
+</body>
+    
+</html>
